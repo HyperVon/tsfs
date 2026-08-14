@@ -269,6 +269,15 @@ In the 1990s demoscene, tracker music was an extraordinary marriage of musical c
 * **The Tracker Solution**: Trackers like **FastTracker II** solved this by bundling **real digital instrument sound samples** (drums, bass, synths, voice clips) inside the file itself, alongside a vertical "spreadsheet" of step-sequenced patterns.
 * **Coding Music in Hex**: Tracker musicians didn't compose on musical sheet staves—they entered alphanumeric hex codes into multi-column matrices, programming pitch shifts, portamento slides, volume envelopes, and arpeggios per-tick in real time. The demo engine (via MikMak's MikMod driver) mixed these audio channels in software on the fly with crystal-clear output on Sound Blaster 16 and Gravis UltraSound cards.
 
+
+
+### 🔊 Positional 3D Audio & Sound Effects
+Alongside the background `.XM` music, the demo loaded standalone digitized voice and sound clips ([`assets/audio/CLIP1.WAV`](assets/audio/CLIP1.WAV) through [`CLIP6.WAV`](assets/audio/CLIP6.WAV)) into extra sound effect channels in MikMod:
+* **Distance Attenuation**: Modulated sound volume dynamically via `Voice_SetVolume()` based on the camera's 3D distance ($Z$-depth proximity) to the sound source in the scene.
+* **Stereo 3D Panning**: Calculated spatial stereo placement via `Voice_SetPanning()` (0 = full left, 128 = center, 255 = full right) based on the horizontal orientation and angle between the camera viewpoint and what was facing the viewer—creating an early attempt at real-time 3D spatialized audio on MS-DOS!
+
+---
+
 ### 🛠️ Asset Extraction Tool
 
 To extract all 271 original assets from `TSFS.DAT`:
