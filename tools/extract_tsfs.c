@@ -252,6 +252,9 @@ int main(int argc, char** argv) {
         return 1;
     }
     mkdir("extracted", 0755);
+    mkdir("extracted/video_frames", 0755);
+    mkdir("extracted/textures", 0755);
+    mkdir("extracted/screens", 0755);
 
     fseek(f, -sizeof(struct exedat_header), SEEK_END);
     fread(&header, sizeof(struct exedat_header), 1, f);
@@ -279,7 +282,15 @@ int main(int argc, char** argv) {
         }
 
         char outpath[256];
-        snprintf(outpath, sizeof(outpath), "extracted/%s", indexblock.name);
+        if (strncmp(indexblock.name, "clip", 4) == 0) {
+            snprintf(outpath, sizeof(outpath), "extracted/video_frames/%s", indexblock.name);
+        } else if (strcmp(indexblock.name, "comedy.pcx") == 0 || strcmp(indexblock.name, "steve.pcx") == 0) {
+            snprintf(outpath, sizeof(outpath), "extracted/screens/%s", indexblock.name);
+        } else if (strstr(indexblock.name, ".pcx") != NULL || strstr(indexblock.name, ".PCX") != NULL) {
+            snprintf(outpath, sizeof(outpath), "extracted/textures/%s", indexblock.name);
+        } else {
+            snprintf(outpath, sizeof(outpath), "extracted/%s", indexblock.name);
+        }
         FILE* out = fopen(outpath, "wb");
         if (out) {
             fwrite(buf, indexblock.original_length, 1, out);
