@@ -56,6 +56,15 @@ Armed with "The Bible", the team manually translated foundational academic algor
 
 ---
 
+---
+
+### 🛸 The Origin of the Title: *Why "The Search for Steve"?*
+The title of the demo is a playful mashup of *Star Trek III: The Search for Spock* and **Steve**—who was **Planet B's brother** and also attended CUNY CSI with the team.
+
+One afternoon while working in the college computer lab and brainstorming names for their upcoming demoparty entry, the group spent half the day trying to track Steve down around campus. In the middle of tossing around title ideas, someone joked: *"Why not call it 'The Search for Steve'?"*
+
+It was funny, stupid, and completely ridiculous—which made it instantly unanimous. The name perfectly embodied the playful, irreverent spirit of **Chaotic Order**, and went on to inspire the live-action video footage of Steve digitized, paletted, and texture-mapped onto the spinning 3D video cube at the climax of the demo!
+
 ### 🌐 Connecting via IRC: The `#co` Channel & International Crew
 While the core engine coders and Planet B were based in New York at CSI, the demoscene was a truly global subculture connected by **IRC (Internet Relay Chat)**.
 
