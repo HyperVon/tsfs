@@ -5,11 +5,21 @@
 [![Group: Chaotic Order](https://img.shields.io/badge/Group-Chaotic%20Order-red.svg)](#)
 [![Year: 1997](https://img.shields.io/badge/Year-1997-yellow.svg)](#)
 
-> **"The Search for Steve"** is a classic 1997 PC demoscene production created by **Chaotic Order** and presented at the **The Gathering 1997 (TG97)** demoparty in Hamar, Norway (12th place in the PC Demo Competition).
+> **"The Search for Steve"** is a classic 1997 PC demoscene production created by **Chaotic Order** and presented at **The Gathering 1997 (TG97)** demoparty in Hamar, Norway (12th place in the PC Demo Competition).
 
 ---
 
-## 🎬 Previews & Screenshots
+## 📺 Full Demo Video (4m 39s)
+
+https://github.com/user-attachments/assets/085ce18e-bc82-4995-a01c-ce338a1f5bb1
+
+<div align="center">
+  <sub>Full demo capture with synchronized 48kHz audio. High-definition 1080p download also available in <b><a href="https://github.com/HyperVon/tsfs/releases/tag/v1.0.0">Release v1.0.0</a></b>.</sub>
+</div>
+
+---
+
+## 🎬 Screenshots & Previews
 
 <div align="center">
 
@@ -21,22 +31,6 @@
 
 ---
 
-
-### 📺 Full Demo Video (4m 39s)
-
-https://github.com/user-attachments/assets/085ce18e-bc82-4995-a01c-ce338a1f5bb1
-
-[![Watch Full Demo Video](https://img.shields.io/badge/▶%20Play%20Full%20Demo%20Video-(1080p%20%2F%2048kHz%20Stereo)-red?style=for-the-badge&logo=youtube)](https://github.com/HyperVon/tsfs/releases/download/v1.0.0/tsfs_full_demo.mp4)
-
-<div align=center>
-  <a href="https://github.com/HyperVon/tsfs/releases/download/v1.0.0/tsfs_full_demo.mp4">
-    <img src="docs/images/intro_comedy.png" width="560" alt="Play Full Demo Video" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);" />
-    <br/>
-    <sub><b>▶ Click to Watch / Download Full 1080p Demo Video (4 min 39 sec)</b></sub>
-  </a>
-</div>
-
----
 ## 👥 Credits (Chaotic Order)
 
 From the original `Tsfs.nfo`:
@@ -57,7 +51,7 @@ From the original `Tsfs.nfo`:
 
 ## 🚀 How to Run
 
-The demo runs with full audio and visual accuracy on modern systems via **DOSBox Staging** (recommended), **DOSBox-X**, or classic **DOSBox**. Pre-configured launchers are included in this repository.
+The demo runs with full audio and visual accuracy on modern systems via **DOSBox Staging** (recommended), **DOSBox-X**, or classic **DOSBox**.
 
 ### 🍎 macOS
 
@@ -65,7 +59,7 @@ The demo runs with full audio and visual accuracy on modern systems via **DOSBox
    ```bash
    brew install dosbox-staging
    ```
-2. Run the included launch script (or launch via config directly):
+2. Run the included launch script:
    ```bash
    ./run.sh
    # or:
@@ -74,14 +68,14 @@ The demo runs with full audio and visual accuracy on modern systems via **DOSBox
 
 ---
 
-### 🪟 Windows 11 / Windows 10
+### 🪟 Windows 11 / 10
 
-1. Install **DOSBox Staging** using `winget` in Windows Terminal / PowerShell:
+1. Install **DOSBox Staging** via Windows Terminal / PowerShell:
    ```powershell
    winget install DOSBox-Staging.DOSBox-Staging
    ```
-   *(Or download the installer from [dosbox-staging.github.io](https://dosbox-staging.github.io/))*
-2. Double-click **`run-windows.bat`** (or open PowerShell in this folder and run `dosbox-staging --conf dosbox.conf`).
+   *(Or download from [dosbox-staging.github.io](https://dosbox-staging.github.io/))*
+2. Double-click **`run-windows.bat`**.
 
 ---
 
@@ -99,40 +93,41 @@ The demo runs with full audio and visual accuracy on modern systems via **DOSBox
 
 ---
 
-## 🎥 Recording Video from DOSBox
+## 🎥 Video & Audio Recording Hotkeys
 
-To record high-quality video with full synchronized audio directly from DOSBox Staging:
+To record high-quality video or audio directly from **DOSBox Staging**:
 
-1. Launch the demo using `./run.sh` or `run-windows.bat`.
-2. Press **`Ctrl + Alt + F5`** (or **`Ctrl + Option + F5`** on macOS) to start recording.
-3. When the demo finishes, press **`Ctrl + Alt + F5`** again to stop.
-4. The recorded video file will be saved in the `capture/` directory.
+| Action | macOS | Windows / Linux |
+| :--- | :--- | :--- |
+| **Start / Stop Video Recording** | `Cmd + F7` *(or `Fn + Cmd + F7`)* | `Ctrl + Alt + F5` *(or `Ctrl + F7`)* |
+| **Start / Stop Audio Recording** | `Cmd + F6` *(or `Fn + Cmd + F6`)* | `Ctrl + F6` |
+| **Take Screenshot** | `Cmd + F5` *(or `Fn + Cmd + F5`)* | `Ctrl + F5` |
+| **Toggle Fullscreen** | `Option + Return` | `Alt + Enter` |
+
+*All captured videos, audio, and screenshots are saved in the `capture/` directory.*
 
 ---
-
 
 ## 📁 Repository Structure
 
-* **[](assets/)** — All original production assets organized by category:
-  * **[](assets/models/)** — 98 Caligari trueSpace 3D meshes (`*.COB`)
-  * **[](assets/paths/)** — 6 keyframed 3D camera path streams (`*.PTH`)
-  * **[](assets/worlds/)** — 5 scene graph definitions (`*.WLD`)
-  * **[](assets/luts/)** — 17 software rendering lookup tables (`*.LUT`)
-  * **[](assets/audio/)** — FastTracker II modules (`*.XM`) and voice clips (`*.WAV`)
-  * **[](assets/palettes/)** — 256-color VGA palette (`PALETTE.RAW`)
-  * **[](assets/data/)** — Original compressed asset archive (`TSFS.DAT`)
-* **[](extracted/)** — Unpacked assets from `TSFS.DAT`:
-  * **[](extracted/video_frames/)** — 266 Steve video frames (`clip000.raw` – `clip265.raw`)
-  * **[](extracted/textures/)** — Multi-page texture atlases (`cointro4.pcx`, `scene1.pcx`, `scene3.pcx`)
-  * **[](extracted/screens/)** — Fullscreen 320x200 graphics (`comedy.pcx`, `steve.pcx`)
-* **[](src/)** — Complete original C source code and Chaotic Order 3D Engine.
-* **[](docs/)** — Screenshots, previews, and 1080p full demo recording (`docs/videos/tsfs_full_demo.mp4`).
-* **[](tools/)** — Extraction and capture conversion utilities.
+* **[`assets/`](assets/)** — Original demo assets organized by category:
+  * [`models/`](assets/models/) — 98 Caligari trueSpace 3D meshes (`*.COB`)
+  * [`paths/`](assets/paths/) — 6 keyframed 3D camera path streams (`*.PTH`)
+  * [`worlds/`](assets/worlds/) — 5 scene graph definitions (`*.WLD`)
+  * [`luts/`](assets/luts/) — 17 software rendering lookup tables (`*.LUT`)
+  * [`audio/`](assets/audio/) — FastTracker II modules (`*.XM`) and voice clips (`*.WAV`)
+  * [`palettes/`](assets/palettes/) — 256-color VGA palette (`PALETTE.RAW`)
+  * [`data/`](assets/data/) — Original compressed asset archive (`TSFS.DAT`)
+* **[`src/`](src/)** — Complete original C source code and Chaotic Order 3D Engine.
+* **[`extracted/`](extracted/)** — Unpacked assets from `TSFS.DAT` (`video_frames/`, `textures/`, `screens/`).
+* **[`docs/`](docs/)** — Screenshots, previews, and 1080p full demo recordings.
+* **[`tools/`](tools/)** — Extraction and capture conversion utilities.
 
 ---
+
 ## 📂 Original Source Code (`src/`)
 
-The original C source code and 3D engine from 1997 have been preserved in the [`src/`](src/) directory:
+The original C source code and 3D engine from 1997 are preserved in the [`src/`](src/) directory:
 
 * **Demo Sequencer & Scenes**:
   * [`tsfs.c`](src/tsfs.c) — Main demo orchestration and timeline
@@ -140,20 +135,19 @@ The original C source code and 3D engine from 1997 have been preserved in the [`
   * [`scene1.c`](src/scene1.c), [`scene2.c`](src/scene2.c), [`scene3.c`](src/scene3.c) — Individual 3D scenes
 * **Chaotic Order 3D Engine Core**:
   * [`co3de.c`](src/co3de.c) / [`co3de.h`](src/co3de.h) — 3D engine core, matrix math, lighting, clipping, and Caligari trueSpace `.COB` parser
-  * [`diff2c.c`](src/diff2c.c) — Inner-loop software polygon rasterizer (flat, gouraud, texture-mapped, transparent, environment-mapped)
+  * [`diff2c.c`](src/diff2c.c) — Inner-loop software polygon rasterizer (flat, Gouraud, texture-mapped, transparent, environment-mapped)
   * [`spline_1.c`](src/spline_1.c) / [`spline_2.c`](src/spline_2.c) — 3D spline camera & object path interpolation
   * [`tmapflat.c`](src/tmapflat.c), [`tmapgour.c`](src/tmapgour.c), [`texture.c`](src/texture.c) — Texture-mapping routines
   * [`gouraud.c`](src/gouraud.c), [`flat.c`](src/flat.c) — Shading and lighting pipelines
 * **Visual Effects & Support**:
-  * [`fire.c`](src/fire.c), [`fire256.c`](src/fire256.c), [`anti.c`](src/anti.c) — Special fire and antialiasing/blur post-processing
+  * [`fire.c`](src/fire.c), [`fire256.c`](src/fire256.c), [`anti.c`](src/anti.c) — Fire and antialiasing/blur post-processing
   * [`pcx.c`](src/pcx.c) / [`pcx.h`](src/pcx.h) — PCX image loader
   * [`cotypes.h`](src/cotypes.h), [`fixed32.h`](src/fixed32.h), [`constant.c`](src/constant.c) — 16.16 fixed-point math and lookup tables
   * [`mikmod.h`](src/mikmod.h) — Sound system headers
 
 ---
-## ⚙️ Technical Architecture & Reverse Engineering
 
-The codebase reflects the state-of-the-art in 1997 PC DOS demoscene programming:
+## ⚙️ Technical Architecture & Reverse Engineering
 
 | Component | Format / Engine | Details |
 | :--- | :--- | :--- |
@@ -163,7 +157,7 @@ The codebase reflects the state-of-the-art in 1997 PC DOS demoscene programming:
 | **Camera Paths** | Custom (`*.PTH`) | Keyframed 3D camera trajectory streams (36 bytes per waypoint: translation and BAM rotation angles) |
 | **Asset Archive** | EXEDAT (`TSFS.DAT`) | 271 packaged resources compressed with Okumura's **LZARI** arithmetic coding algorithm |
 | **Video Playback** | Raw Paletted Frames (`clip000.raw` – `clip265.raw`) | 266 frames (128×128 8-bit) texture-mapped in real-time onto 3D planes |
-| **Look-Up Tables** | 17 LUTs (`*.LUT`) | Precalculated 64KB & 16KB tables for real-time 8-bit motion blur, gouraud/depth shading, and cross-fading |
+| **Look-Up Tables** | 17 LUTs (`*.LUT`) | Precalculated 64KB & 16KB tables for real-time 8-bit motion blur, Gouraud/depth shading, and cross-fading |
 | **Music & Sound** | FastTracker II (`*.XM`) & WAV | `INTRO1.XM` & `IDEA5.XM` multichannel tracker modules with synchronized 8-bit voice clips |
 
 ### 🛠️ Asset Extraction Tool
@@ -173,7 +167,7 @@ To extract all 271 original assets from `TSFS.DAT`:
 clang -O2 tools/extract_tsfs.c -o tools/extract_tsfs
 ./tools/extract_tsfs
 ```
-This extracts all 266 video frames, texture atlases (`cointro4.pcx`, `scene1.pcx`, `scene3.pcx`), and screen graphics (`comedy.pcx`, `steve.pcx`) into the `extracted/` folder.
+This unpacks all assets cleanly into `extracted/video_frames/`, `extracted/textures/`, and `extracted/screens/`.
 
 ---
 
