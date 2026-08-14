@@ -53,7 +53,7 @@ The demo runs with full audio and visual accuracy on modern systems via **DOSBox
    ```bash
    ./run.sh
    # or:
-   dosbox-staging -conf dosbox.conf
+   dosbox-staging --conf dosbox.conf
    ```
 
 ---
@@ -65,7 +65,7 @@ The demo runs with full audio and visual accuracy on modern systems via **DOSBox
    winget install DOSBox-Staging.DOSBox-Staging
    ```
    *(Or download the installer from [dosbox-staging.github.io](https://dosbox-staging.github.io/))*
-2. Double-click **`run-windows.bat`** (or open PowerShell in this folder and run `dosbox-staging -conf dosbox.conf`).
+2. Double-click **`run-windows.bat`** (or open PowerShell in this folder and run `dosbox-staging --conf dosbox.conf`).
 
 ---
 

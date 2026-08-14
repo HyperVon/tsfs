@@ -6,11 +6,14 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$SCRIPT_DIR" || exit 1
 
 if command -v dosbox-staging >/dev/null 2>&1; then
-    EMULATOR="dosbox-staging"
+    echo "Starting The Search for Steve via DOSBox Staging..."
+    dosbox-staging --conf "$SCRIPT_DIR/dosbox.conf"
 elif command -v dosbox-x >/dev/null 2>&1; then
-    EMULATOR="dosbox-x"
+    echo "Starting The Search for Steve via DOSBox-X..."
+    dosbox-x -conf "$SCRIPT_DIR/dosbox.conf"
 elif command -v dosbox >/dev/null 2>&1; then
-    EMULATOR="dosbox"
+    echo "Starting The Search for Steve via DOSBox..."
+    dosbox -conf "$SCRIPT_DIR/dosbox.conf"
 else
     echo "============================================================"
     echo " Error: DOSBox is not installed."
@@ -22,6 +25,3 @@ else
     echo "============================================================"
     exit 1
 fi
-
-echo "Starting The Search for Steve via $EMULATOR..."
-"$EMULATOR" -conf dosbox.conf

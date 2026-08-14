@@ -8,37 +8,37 @@ cd /d "%~dp0"
 where dosbox-staging >nul 2>&1
 if %ERRORLEVEL% equ 0 (
     echo Starting The Search for Steve via DOSBox Staging...
-    dosbox-staging -conf dosbox.conf
+    dosbox-staging --conf "%~dp0dosbox.conf"
     goto :eof
 )
 
 where dosbox-x >nul 2>&1
 if %ERRORLEVEL% equ 0 (
     echo Starting The Search for Steve via DOSBox-X...
-    dosbox-x -conf dosbox.conf
+    dosbox-x -conf "%~dp0dosbox.conf"
     goto :eof
 )
 
 where dosbox >nul 2>&1
 if %ERRORLEVEL% equ 0 (
     echo Starting The Search for Steve via DOSBox...
-    dosbox -conf dosbox.conf
+    dosbox -conf "%~dp0dosbox.conf"
     goto :eof
 )
 
 REM Check default install locations
 if exist "%LOCALAPPDATA%\DOSBox-Staging\dosbox.exe" (
-    "%LOCALAPPDATA%\DOSBox-Staging\dosbox.exe" -conf dosbox.conf
+    "%LOCALAPPDATA%\DOSBox-Staging\dosbox.exe" --conf "%~dp0dosbox.conf"
     goto :eof
 )
 
 if exist "%ProgramFiles%\DOSBox-0.74-3\DOSBox.exe" (
-    "%ProgramFiles%\DOSBox-0.74-3\DOSBox.exe" -conf dosbox.conf
+    "%ProgramFiles%\DOSBox-0.74-3\DOSBox.exe" -conf "%~dp0dosbox.conf"
     goto :eof
 )
 
 if exist "%ProgramFiles(x86)%\DOSBox-0.74-3\DOSBox.exe" (
-    "%ProgramFiles(x86)%\DOSBox-0.74-3\DOSBox.exe" -conf dosbox.conf
+    "%ProgramFiles(x86)%\DOSBox-0.74-3\DOSBox.exe" -conf "%~dp0dosbox.conf"
     goto :eof
 )
 
