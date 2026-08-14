@@ -122,8 +122,9 @@ This extracts all 266 video frames, texture atlases (`cointro4.pcx`, `scene1.pcx
 
 ## 🌐 Historical Links
 
-* **Pouët.net Entry**: [The Search for Steve on Pouët](https://www.pouet.net/prod.php?which=1700)
-* **Demozoo Entry**: [The Search for Steve on Demozoo](https://demozoo.org/productions/10204/)
+* **Pouët.net Entry**: [The Search for Steve on Pouët](https://www.pouet.net/prod.php?which=8627)
+* **Demozoo Entry**: [The Search for Steve on Demozoo](https://demozoo.org/productions/18973/)
+* **Scene.org Archive**: [The Search for Steve on Scene.org](https://files.scene.org/view/parties/1997/thegathering97/demo/tsfs.zip)
 * **The Gathering**: [The Gathering 1997 (TG97)](https://www.gathering.org/)
 * **Original NFO**: View [Tsfs.nfo](Tsfs.nfo)
 
