@@ -245,8 +245,12 @@ void lzari_decompress(FILE* fptr1, unsigned char* tbuffer, long comp_size) {
 }
 
 int main(int argc, char** argv) {
-    const char* dat_file = "TSFS.DAT";
+    const char* dat_file = "assets/data/TSFS.DAT";
     FILE* f = fopen(dat_file, "rb");
+    if (!f) {
+        dat_file = "TSFS.DAT";
+        f = fopen(dat_file, "rb");
+    }
     if (!f) {
         perror("fopen");
         return 1;

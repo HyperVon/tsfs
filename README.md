@@ -21,6 +21,14 @@
 
 ---
 
+
+### 📺 Full Demo Video (4K / 1080p Recording)
+
+https://github.com/HyperVon/tsfs/raw/main/docs/videos/tsfs_full_demo.mp4
+
+*(Click above to play the full 4-minute 39-second recording directly on GitHub)*
+
+---
 ## 👥 Credits (Chaotic Order)
 
 From the original `Tsfs.nfo`:
@@ -95,6 +103,25 @@ To record high-quality video with full synchronized audio directly from DOSBox S
 ---
 
 
+## 📁 Repository Structure
+
+* **[](assets/)** — All original production assets organized by category:
+  * **[](assets/models/)** — 98 Caligari trueSpace 3D meshes (`*.COB`)
+  * **[](assets/paths/)** — 6 keyframed 3D camera path streams (`*.PTH`)
+  * **[](assets/worlds/)** — 5 scene graph definitions (`*.WLD`)
+  * **[](assets/luts/)** — 17 software rendering lookup tables (`*.LUT`)
+  * **[](assets/audio/)** — FastTracker II modules (`*.XM`) and voice clips (`*.WAV`)
+  * **[](assets/palettes/)** — 256-color VGA palette (`PALETTE.RAW`)
+  * **[](assets/data/)** — Original compressed asset archive (`TSFS.DAT`)
+* **[](extracted/)** — Unpacked assets from `TSFS.DAT`:
+  * **[](extracted/video_frames/)** — 266 Steve video frames (`clip000.raw` – `clip265.raw`)
+  * **[](extracted/textures/)** — Multi-page texture atlases (`cointro4.pcx`, `scene1.pcx`, `scene3.pcx`)
+  * **[](extracted/screens/)** — Fullscreen 320x200 graphics (`comedy.pcx`, `steve.pcx`)
+* **[](src/)** — Complete original C source code and Chaotic Order 3D Engine.
+* **[](docs/)** — Screenshots, previews, and 1080p full demo recording (`docs/videos/tsfs_full_demo.mp4`).
+* **[](tools/)** — Extraction and capture conversion utilities.
+
+---
 ## 📂 Original Source Code (`src/`)
 
 The original C source code and 3D engine from 1997 have been preserved in the [`src/`](src/) directory:
