@@ -94,6 +94,28 @@ To record high-quality video with full synchronized audio directly from DOSBox S
 
 ---
 
+
+## 📂 Original Source Code (`src/`)
+
+The original C source code and 3D engine from 1997 have been preserved in the [`src/`](src/) directory:
+
+* **Demo Sequencer & Scenes**:
+  * [`tsfs.c`](src/tsfs.c) — Main demo orchestration and timeline
+  * [`cointro.c`](src/cointro.c) — Chaotic Order 3D intro sequence
+  * [`scene1.c`](src/scene1.c), [`scene2.c`](src/scene2.c), [`scene3.c`](src/scene3.c) — Individual 3D scenes
+* **Chaotic Order 3D Engine Core**:
+  * [`co3de.c`](src/co3de.c) / [`co3de.h`](src/co3de.h) — 3D engine core, matrix math, lighting, clipping, and Caligari trueSpace `.COB` parser
+  * [`diff2c.c`](src/diff2c.c) — Inner-loop software polygon rasterizer (flat, gouraud, texture-mapped, transparent, environment-mapped)
+  * [`spline_1.c`](src/spline_1.c) / [`spline_2.c`](src/spline_2.c) — 3D spline camera & object path interpolation
+  * [`tmapflat.c`](src/tmapflat.c), [`tmapgour.c`](src/tmapgour.c), [`texture.c`](src/texture.c) — Texture-mapping routines
+  * [`gouraud.c`](src/gouraud.c), [`flat.c`](src/flat.c) — Shading and lighting pipelines
+* **Visual Effects & Support**:
+  * [`fire.c`](src/fire.c), [`fire256.c`](src/fire256.c), [`anti.c`](src/anti.c) — Special fire and antialiasing/blur post-processing
+  * [`pcx.c`](src/pcx.c) / [`pcx.h`](src/pcx.h) — PCX image loader
+  * [`cotypes.h`](src/cotypes.h), [`fixed32.h`](src/fixed32.h), [`constant.c`](src/constant.c) — 16.16 fixed-point math and lookup tables
+  * [`mikmod.h`](src/mikmod.h) — Sound system headers
+
+---
 ## ⚙️ Technical Architecture & Reverse Engineering
 
 The codebase reflects the state-of-the-art in 1997 PC DOS demoscene programming:
