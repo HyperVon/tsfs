@@ -65,7 +65,7 @@ One afternoon while working in the college computer lab and brainstorming names 
 
 It was funny, stupid, and completely ridiculous—which made it instantly unanimous. The name perfectly embodied the playful, irreverent spirit of **Chaotic Order**.
 
-*(Despite the title, Steve himself never actually appears in the demo! The digitized 128×128 video clips and sound effects mapped onto the 3D video cube at the climax are direct rips from **Star Trek III: The Search for Spock**!)*
+*(Despite the title, Steve himself never actually appears in the demo! The digitized 128×128 video clips and sound effects mapped onto the 3D video cube at the climax are direct rips from **Star Trek III: The Search for Spock**! Legend has it that when the demo finished playing on the big projection screens to thousands of demosceners in Norway at The Gathering 1997, people in the audience were genuinely turning to each other asking: **"Who the fuck is Steve?!"**)*
 
 ### 🌐 Connecting via IRC: The `#co` Channel & International Crew
 While the core engine coders and Planet B were based in New York at CSI, the demoscene was a truly global subculture connected by **IRC (Internet Relay Chat)**.
