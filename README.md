@@ -19,13 +19,17 @@ https://github.com/user-attachments/assets/085ce18e-bc82-4995-a01c-ce338a1f5bb1
 
 ---
 
-## 🎬 Screenshots & Previews
+## 🎬 3D Scene Gallery
 
 <div align="center">
 
-| Intro Screen | The Video Cube (Steve Footage) | Ending Screen |
+| 3D Logo & Spikes | Waving Box Matrix | Multi-Axis 3D Toruses |
 | :---: | :---: | :---: |
-| <img src="docs/images/intro_comedy.png" width="240" alt="Intro Screen" /> | <img src="docs/images/steve_animation.gif" width="240" alt="Steve Video Footage" /> | <img src="docs/images/ending_steve.png" width="240" alt="Ending Screen" /> |
+| <img src="docs/images/scene_1_cointro.png" width="260" alt="Chaotic Order 3D Logo Scene" /> | <img src="docs/images/scene_2_grid.png" width="260" alt="Waving Box Matrix Scene" /> | <img src="docs/images/scene_3_torus.png" width="260" alt="Rotating Toruses Scene" /> |
+
+| The Search Journey | 3D Video Cube | Steve Video Stream |
+| :---: | :---: | :---: |
+| <img src="docs/images/scene_4_signs.png" width="260" alt="Road Signs Scene" /> | <img src="docs/images/scene_5_videocube.png" width="260" alt="The 3D Video Cube" /> | <img src="docs/images/steve_animation.gif" width="260" alt="Steve Animation Preview" /> |
 
 </div>
 
