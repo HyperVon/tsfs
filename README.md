@@ -27,9 +27,9 @@ https://github.com/user-attachments/assets/085ce18e-bc82-4995-a01c-ce338a1f5bb1
 | :---: | :---: | :---: |
 | <img src="docs/images/scene_1_cointro.png" width="260" alt="Chaotic Order 3D Logo Scene" /> | <img src="docs/images/scene_2_grid.png" width="260" alt="Waving Box Matrix Scene" /> | <img src="docs/images/scene_3_torus.png" width="260" alt="Rotating Toruses Scene" /> |
 
-| The Search Journey | 3D Video Cube | Steve Video Stream |
+| The Search Journey | 3D Video Cube | Video Stream (Spock) |
 | :---: | :---: | :---: |
-| <img src="docs/images/scene_4_signs.png" width="260" alt="Road Signs Scene" /> | <img src="docs/images/scene_5_videocube.png" width="260" alt="The 3D Video Cube" /> | <img src="docs/images/steve_animation.gif" width="260" alt="Steve Animation Preview" /> |
+| <img src="docs/images/scene_4_signs.png" width="260" alt="Road Signs Scene" /> | <img src="docs/images/scene_5_videocube.png" width="260" alt="The 3D Video Cube" /> | <img src="docs/images/steve_animation.gif" width="260" alt="Star Trek Video Animation Preview" /> |
 
 </div>
 
@@ -63,7 +63,9 @@ The title of the demo is a playful mashup of *Star Trek III: The Search for Spoc
 
 One afternoon while working in the college computer lab and brainstorming names for their upcoming demoparty entry, the group spent half the day trying to track Steve down around campus. In the middle of tossing around title ideas, someone joked: *"Why not call it 'The Search for Steve'?"*
 
-It was funny, stupid, and completely ridiculous—which made it instantly unanimous. The name perfectly embodied the playful, irreverent spirit of **Chaotic Order**, and went on to inspire the live-action video footage of Steve digitized, paletted, and texture-mapped onto the spinning 3D video cube at the climax of the demo!
+It was funny, stupid, and completely ridiculous—which made it instantly unanimous. The name perfectly embodied the playful, irreverent spirit of **Chaotic Order**.
+
+*(Despite the title, Steve himself never actually appears in the demo! The digitized 128×128 video clips and sound effects mapped onto the 3D video cube at the climax are direct rips from **Star Trek III: The Search for Spock**!)*
 
 ### 🌐 Connecting via IRC: The `#co` Channel & International Crew
 While the core engine coders and Planet B were based in New York at CSI, the demoscene was a truly global subculture connected by **IRC (Internet Relay Chat)**.
@@ -97,7 +99,7 @@ To modern eyes accustomed to real-time ray tracing and 4K displays, a 320×200 r
 
 #### ⚡ Why This Was an Engineering Achievement
 * **No Hardware Graphics Pipelines**: There was no OpenGL, DirectX 3D, or Vulkan. Every single polygon, vertex transform, perspective division, z-clipping calculation, Gouraud shading gradient, and texture pixel (*texel*) had to be hand-calculated on the CPU for every frame and written directly to VGA memory buffer `0xA0000`.
-* **Real-Time Video on 3D Geometry**: Mapping real-time 128×128 video footage of "Steve" onto multiple rotating faces of a 3D cube while simultaneously executing fixed-point matrix transforms, polygon clipping, and background spline rendering required squeezing every single CPU cycle available on a Pentium processor.
+* **Real-Time Video on 3D Geometry**: Mapping real-time 128×128 video footage ripped from *The Search for Spock* onto multiple rotating faces of a 3D cube while simultaneously executing fixed-point matrix transforms, polygon clipping, and background spline rendering required squeezing every single CPU cycle available on a Pentium processor.
 * **16.16 Fixed-Point Arithmetic**: Because floating-point division was prohibitively slow on early x86 CPUs, all 3D trigonometry and projection math was implemented using 32-bit fixed-point integers (16 bits integer, 16 bits fractional).
 * **Lookup Table Magic**: Real-time cross-fades, lighting depth falloff, and translucency were calculated using precomputed 16KB and 64KB lookup tables (`*.LUT`) to perform color blending in a single memory fetch.
 
