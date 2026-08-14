@@ -40,7 +40,7 @@ https://github.com/user-attachments/assets/085ce18e-bc82-4995-a01c-ce338a1f5bb1
 ### 🎓 Born in a CUNY Computer Lab & "The Bible"
 *The Search for Steve* was crafted in 1996–1997 by undergraduate students at the **CUNY College of Staten Island (CSI)** in New York: coders **Hypersomnia** ([@HyperVon](https://github.com/HyperVon)) and **Sirmikey**, alongside fellow CSI student and musician **Planet B**.
 
-Working late nights in the CSI computer lab between and after classes with no formal 3D graphics curriculum, commercial game engines, or GPU acceleration, they built their entire 3D pipeline from first principles. The group's official 1997 homepage was even hosted directly on a Sun Microsystems workstation sitting in the college lab:
+Working shoulder-to-shoulder late nights in the CSI computer lab between and after classes with no formal 3D graphics curriculum, commercial game engines, or GPU acceleration, they built their entire 3D pipeline from first principles. The vast majority of the codebase was developed through **pair programming**—long before the practice became widespread in modern software engineering—sitting side-by-side at a single monitor with **SirMikey** frequently driving the keyboard and **Hypersomnia** pairing alongside him, working out the matrix mathematics, designing the scenes, and debugging scanline rasterizers together in real time. The group's official 1997 homepage was even hosted directly on a Sun Microsystems workstation sitting in the college lab:
 ```text
 http://sunburn.cs.csi.cuny.edu/co.html
 ```
