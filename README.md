@@ -151,6 +151,24 @@ The original C source code and 3D engine from 1997 are preserved in the [`src/`]
 
 ---
 
+### 🎥 The Interactive Camera Path Recorder & Spline Engine
+
+In 1997, Chaotic Order built a custom in-engine 3D camera path creation workflow to choreograph cinematic scene transitions:
+
+1. **Interactive 3D Waypoint Recorder ([](src/record.c) & [](src/record1.c))**:
+   * Allowed the designer to fly through any 3D scene in real-time using keyboard controls:
+     * **Camera Viewpoint**: Numpad `4`/`6` (X), `8`/`2` (Y), `+`/`-` (Z in 16.16 fixed-point).
+     * **Camera Look-At Target**: `A`/`S` (X), `W`/`Z` (Y), `[`/`]` (Z).
+     * **Directional Light Angle**: `7`/`9`, `1`/`3`.
+   * Pressing **`R`** captured the current viewpoint, look-at target, and light vector, appending a 36-byte keyframe record to the `*.PTH` stream.
+2. **Kochanek-Bartels Spline Interpolation ([](src/spline_1.c) & [](src/spline_2.c))**:
+   * Evaluates cubic Hermite curves across control points with customizable **Tension**, **Continuity**, and **Bias** (TCB splines based on SIGGRAPH '84 research).
+   * Incorporates ease-in and ease-out acceleration profiles (`Ease(float t, float a, float b)`) so camera movements accelerate and decelerate smoothly around corners.
+3. **Trajectory Previewer ([](src/play.c), [](src/play2.c), [](src/play3.c))**:
+   * Tested and visualized the interpolated camera paths in real-time within DOS before integrating into the final demo sequencer ([](src/tsfs.c)).
+
+---
+
 ## ⚙️ Technical Architecture & Reverse Engineering
 
 | Component | Format / Engine | Details |
