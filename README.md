@@ -38,17 +38,32 @@ https://github.com/user-attachments/assets/085ce18e-bc82-4995-a01c-ce338a1f5bb1
 ## 🏛️ Origins & The 1990s Demoscene
 
 ### 🎓 Born in a CUNY Computer Lab & "The Bible"
-*The Search for Steve* was crafted in 1996–1997 by two undergraduate students—**Hypersomnia** ([@HyperVon](https://github.com/HyperVon)) and **Sirmikey**—who attended the **CUNY College of Staten Island (CSI)** in New York. 
+*The Search for Steve* was crafted in 1996–1997 by undergraduate students at the **CUNY College of Staten Island (CSI)** in New York: coders **Hypersomnia** ([@HyperVon](https://github.com/HyperVon)) and **Sirmikey**, alongside fellow CSI student and musician **Planet B**.
 
-Working late nights in the college computer lab between and after classes with no formal 3D graphics courses, commercial game engines, or GPU acceleration, they built their entire 3D pipeline from first principles. Their primary theoretical reference was the legendary 1,200-page white hardcover tome known universally in computer science as **"The Bible of Computer Graphics"** (*Computer Graphics: Principles and Practice* by Foley, van Dam, Feiner, & Hughes). 
+Working late nights in the CSI computer lab between and after classes with no formal 3D graphics curriculum, commercial game engines, or GPU acceleration, they built their entire 3D pipeline from first principles. The group's official 1997 homepage was even hosted directly on a Sun Microsystems workstation sitting in the college lab:
+```text
+http://sunburn.cs.csi.cuny.edu/co.html
+```
+*(Though truth be told, we didn't use that Sun box for much else!)*
 
-Armed with "The Bible", they manually translated foundational academic algorithms into high-performance, real-time MS-DOS C and x86 fixed-point assembly:
+Their primary theoretical foundation came from the legendary 1,200-page white hardcover tome known universally throughout computer science as **"The Bible of Computer Graphics"** (*Computer Graphics: Principles and Practice* by Foley, van Dam, Feiner, & Hughes). 
+
+Armed with "The Bible", the team manually translated foundational academic algorithms into high-performance, real-time MS-DOS C and x86 fixed-point assembly:
 * **View-Frustum Polygon Clipping**: Translating **Sutherland-Hodgman clipping** equations into real-time 3D screen culling ([`src/diff2c.c`](src/diff2c.c))
 * **Shading & Illumination**: Deriving **Lambertian Gouraud shading** cosine dot products and sub-pixel edge interpolation ([`src/gouraud.c`](src/gouraud.c))
 * **3D Matrix Transformations**: Implementing 4×4 homogeneous coordinate transforms and perspective division in 16.16 fixed-point math ([`src/co3de.c`](src/co3de.c))
 * **Spline Interpolation**: Adapting **Kochanek-Bartels / cubic Hermite curves** into an interactive camera path editor ([`src/spline_1.c`](src/spline_1.c), [`src/record.c`](src/record.c))
 
-Together with tracker musicians **Planet B**, **Mesonyx**, and **Erek**, they packaged the production under the demogroup name **Chaotic Order** and submitted it to compete against top European demogroups on the international stage at **The Gathering 1997 (TG97)** in Hamar, Norway—placing 12th in the PC Demo Competition.
+---
+
+### 🌐 Connecting via IRC: The `#co` Channel & International Crew
+While the core engine coders and Planet B were based in New York at CSI, the demoscene was a truly global subculture connected by **IRC (Internet Relay Chat)**.
+
+Chaotic Order hung out in their own dedicated IRC channel, **`#co`**. It was on `#co` that the Staten Island crew connected with talented international tracker musicians from Scandinavia:
+* **Mesonyx** — Joining from **Iceland** 🇮🇸
+* **Erek** — Joining from **Sweden** 🇸🇪
+
+Collaborating entirely over IRC, FTP, and BBS networks across oceans, they combined New York coding with Nordic tracker audio to compete on the international stage at **The Gathering 1997 (TG97)** in Hamar, Norway—placing 12th in the PC Demo Competition.
 
 ---
 
@@ -224,6 +239,24 @@ In 1997, Chaotic Order built a custom in-engine 3D camera path creation workflow
 | **Video Playback** | Raw Paletted Frames (`clip000.raw` – `clip265.raw`) | 266 frames (128×128 8-bit) texture-mapped in real-time onto 3D planes |
 | **Look-Up Tables** | 17 LUTs (`*.LUT`) | Precalculated 64KB & 16KB tables for real-time 8-bit motion blur, Gouraud/depth shading, and cross-fading |
 | **Music & Sound** | FastTracker II (`*.XM`) & WAV | `INTRO1.XM` & `IDEA5.XM` multichannel tracker modules with synchronized 8-bit voice clips |
+
+
+---
+
+## 🎵 The Soundtrack & The Art of Tracker Music
+
+The demo features multi-channel digital tracker soundtracks stored in **FastTracker II Extended Module (`*.XM`)** format:
+
+* **[`assets/audio/INTRO1.XM`](assets/audio/INTRO1.XM)** — Composed by **Planet B** (Intro sequence)
+* **[`assets/audio/IDEA5.XM`](assets/audio/IDEA5.XM)** — Composed by **Planet B**, **Mesonyx** (Iceland), and **Erek** (Sweden) (Main demo journey)
+
+### 🎹 What Was a "Tracker"?
+In the 1990s demoscene, tracker music was an extraordinary marriage of musical composition and computer hacking:
+
+* **Why Not MP3 or WAV?** In 1997, streaming raw digital audio (WAV/MP3) was impossible—a single 4-minute uncompressed song was 45+ MB (far exceeding the entire RAM of a PC and too large for floppy disks or 33.6k dial-up downloads), while decoding early MP3s consumed 100% of a Pentium CPU just for playback.
+* **Why Not MIDI?** Standard MIDI files contained only note instructions, relying on whatever cheap FM synthesizer was built into the user's sound card, sounding completely different (and often terrible) on every machine.
+* **The Tracker Solution**: Trackers like **FastTracker II** solved this by bundling **real digital instrument sound samples** (drums, bass, synths, voice clips) inside the file itself, alongside a vertical "spreadsheet" of step-sequenced patterns.
+* **Coding Music in Hex**: Tracker musicians didn't compose on musical sheet staves—they entered alphanumeric hex codes into multi-column matrices, programming pitch shifts, portamento slides, volume envelopes, and arpeggios per-tick in real time. The demo engine (via MikMak's MikMod driver) mixed these audio channels in software on the fly with crystal-clear output on Sound Blaster 16 and Gravis UltraSound cards.
 
 ### 🛠️ Asset Extraction Tool
 
