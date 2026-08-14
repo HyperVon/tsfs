@@ -43,10 +43,10 @@ https://github.com/user-attachments/assets/085ce18e-bc82-4995-a01c-ce338a1f5bb1
 Working late nights in the college computer lab between and after classes with no formal 3D graphics courses, commercial game engines, or GPU acceleration, they built their entire 3D pipeline from first principles. Their primary theoretical reference was the legendary 1,200-page white hardcover tome known universally in computer science as **"The Bible of Computer Graphics"** (*Computer Graphics: Principles and Practice* by Foley, van Dam, Feiner, & Hughes). 
 
 Armed with "The Bible", they manually translated foundational academic algorithms into high-performance, real-time MS-DOS C and x86 fixed-point assembly:
-* **View-Frustum Polygon Clipping**: Translating **Sutherland-Hodgman clipping** equations into real-time 3D screen culling ([](src/diff2c.c))
-* **Shading & Illumination**: Deriving **Lambertian Gouraud shading** cosine dot products and sub-pixel edge interpolation ([](src/gouraud.c))
-* **3D Matrix Transformations**: Implementing 4×4 homogeneous coordinate transforms and perspective division in 16.16 fixed-point math ([](src/co3de.c))
-* **Spline Interpolation**: Adapting **Kochanek-Bartels / cubic Hermite curves** into an interactive camera path editor ([](src/spline_1.c), [](src/record.c))
+* **View-Frustum Polygon Clipping**: Translating **Sutherland-Hodgman clipping** equations into real-time 3D screen culling ([`src/diff2c.c`](src/diff2c.c))
+* **Shading & Illumination**: Deriving **Lambertian Gouraud shading** cosine dot products and sub-pixel edge interpolation ([`src/gouraud.c`](src/gouraud.c))
+* **3D Matrix Transformations**: Implementing 4×4 homogeneous coordinate transforms and perspective division in 16.16 fixed-point math ([`src/co3de.c`](src/co3de.c))
+* **Spline Interpolation**: Adapting **Kochanek-Bartels / cubic Hermite curves** into an interactive camera path editor ([`src/spline_1.c`](src/spline_1.c), [`src/record.c`](src/record.c))
 
 Together with tracker musicians **Planet B**, **Mesonyx**, and **Erek**, they packaged the production under the demogroup name **Chaotic Order** and submitted it to compete against top European demogroups on the international stage at **The Gathering 1997 (TG97)** in Hamar, Norway—placing 12th in the PC Demo Competition.
 
