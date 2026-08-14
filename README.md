@@ -35,6 +35,41 @@ https://github.com/user-attachments/assets/085ce18e-bc82-4995-a01c-ce338a1f5bb1
 
 ---
 
+## 🏛️ Origins & The 1990s Demoscene
+
+### 🎓 Born in a CUNY Computer Lab
+*The Search for Steve* was crafted in 1996–1997 by two undergraduate students—**Hypersomnia** ([@HyperVon](https://github.com/HyperVon)) and **Sirmikey**—who attended the **CUNY College of Staten Island (CSI)** in New York. 
+
+Working late nights in the college computer lab between and after classes, with no formal 3D graphics curriculum, commercial game engines, or high-budget studio tools, they wrote a complete 3D rasterization engine, camera choreography tool, and demo sequencer from scratch in C and x86 assembly. Together with tracker musicians **Planet B**, **Mesonyx**, and **Erek**, they released the production under the group name **Chaotic Order** to compete on the international stage at **The Gathering 1997 (TG97)** in Hamar, Norway—placing 12th in the PC Demo Competition.
+
+---
+
+### 🕹️ What Was the Demoscene?
+The **demoscene** is an international computer art subculture focused on producing *demos*—non-interactive, self-contained audiovisual programs that calculate and render complex 3D graphics, visual effects, and multichannel music in real-time. 
+
+In the 1990s, demosceners competed fiercely at massive European "demoparties" (like *The Gathering*, held inside the Vikingskipet Olympic speed skating arena with thousands of attendees). Demos were judged on pure programming ingenuity, artistic direction, visual design, and musical composition—pushing commodity computer hardware far beyond what manufacturers ever intended.
+
+---
+
+### 💻 1997 vs. Today: A Feat of Pure Software Rendering
+To modern eyes accustomed to real-time ray tracing and 4K displays, a 320×200 retro demo might seem simple—until you understand the severe hardware limitations of 1997:
+
+| Metric | 1997 MS-DOS PC (Target Hardware) | Modern PC / Mac (Today) | Scale Difference |
+| :--- | :--- | :--- | :--- |
+| **GPU Acceleration** | **None** *(100% Pure Software Rendering on CPU)* | Dedicated GPU / Apple Silicon (e.g. RTX 4090 / M-Series) | **Infinite** *(No 3D hardware existed on target PCs)* |
+| **CPU Clock & Architecture** | Single-Core Intel Pentium @ 100–166 MHz | 8–24 Cores @ 3.5–5.7 GHz | **>1,000× faster per core** |
+| **Floating-Point Throughput** | ~0.15 GFLOPS | 15–80+ TFLOPS | **>100,000× higher compute capacity** |
+| **System Memory (RAM)** | 16 MB – 32 MB | 16 GB – 64 GB | **~1,000× to 2,000× more memory** |
+| **Display Mode** | 320×200 with 256 indexed palette colors (VGA Mode 13h) | 3840×2160 (4K) 32-bit True Color (16.7M colors + HDR) | **~130× pixel count**, unconstrained color depth |
+| **Math Optimization** | 16.16 Fixed-Point Math & Precomputed 64KB LUTs | 64-bit IEEE Floating Point & SIMD Vector Instructions | Direct FP calculation in hardware |
+
+#### ⚡ Why This Was an Engineering Achievement
+* **No Hardware Graphics Pipelines**: There was no OpenGL, DirectX 3D, or Vulkan. Every single polygon, vertex transform, perspective division, z-clipping calculation, Gouraud shading gradient, and texture pixel (*texel*) had to be hand-calculated on the CPU for every frame and written directly to VGA memory buffer `0xA0000`.
+* **Real-Time Video on 3D Geometry**: Mapping real-time 128×128 video footage of "Steve" onto multiple rotating faces of a 3D cube while simultaneously executing fixed-point matrix transforms, polygon clipping, and background spline rendering required squeezing every single CPU cycle available on a Pentium processor.
+* **16.16 Fixed-Point Arithmetic**: Because floating-point division was prohibitively slow on early x86 CPUs, all 3D trigonometry and projection math was implemented using 32-bit fixed-point integers (16 bits integer, 16 bits fractional).
+* **Lookup Table Magic**: Real-time cross-fades, lighting depth falloff, and translucency were calculated using precomputed 16KB and 64KB lookup tables (`*.LUT`) to perform color blending in a single memory fetch.
+
+---
 ## 👥 Credits (Chaotic Order)
 
 From the original `Tsfs.nfo`:
