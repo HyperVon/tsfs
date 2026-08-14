@@ -8,11 +8,11 @@ class App {
     constructor() {
         this.THREE = THREE;
         this.container = document.getElementById('viewport');
-        this.mode = 'modern'; // 'modern' or 'retro'
+        this.mode = 'modern';
         this.isFreeCam = false;
         this.isPlaying = false;
         this.currentTime = 0;
-        this.duration = 279; // 4m 39s
+        this.duration = 279;
         this.clock = new THREE.Clock();
 
         this.cachedGeometries = {};
@@ -30,33 +30,35 @@ class App {
 
     initThree() {
         this.scene = new THREE.Scene();
-        this.scene.background = new THREE.Color(0x02040a);
+        this.scene.background = new THREE.Color(0x050814);
 
-        this.camera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 0.1, 1000);
-        this.camera.position.set(0, 0, -20);
+        this.camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
+        this.camera.position.set(0, 1, -14);
+        this.camera.lookAt(3.8, 0.2, 0);
 
         this.renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance' });
         this.renderer.setSize(window.innerWidth, window.innerHeight);
         this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
         this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
-        this.renderer.toneMappingExposure = 1.2;
+        this.renderer.toneMappingExposure = 1.3;
         this.container.appendChild(this.renderer.domElement);
 
-        // Ambient light
-        this.ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
+        // Global ambient & directional lights
+        this.ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
         this.scene.add(this.ambientLight);
 
-        // Directional Sun / Stage Light
-        this.dirLight = new THREE.DirectionalLight(0xffffff, 1.2);
-        this.dirLight.position.set(20, 40, 20);
+        this.dirLight = new THREE.DirectionalLight(0xffffff, 1.5);
+        this.dirLight.position.set(15, 30, 15);
         this.scene.add(this.dirLight);
+
+        this.dirLight2 = new THREE.DirectionalLight(0x00ffee, 0.8);
+        this.dirLight2.position.set(-15, -20, -15);
+        this.scene.add(this.dirLight2);
     }
 
     initAudio() {
         this.audioPlayer = new XMPlayer();
-        this.audioPlayer.loadTrack('assets/audio/tsfs_soundtrack.mp3').catch(() => {
-            console.log('Audio initialized, ready for play on user interaction');
-        });
+        this.audioPlayer.loadTrack('assets/audio/tsfs_soundtrack.mp3');
     }
 
     async initSceneManager() {
@@ -75,7 +77,7 @@ class App {
         }
         const resp = await fetch(url);
         const arrayBuf = await resp.arrayBuffer();
-        const cobData = COBParser.parse(arrayBuf);
+        const cobData = COBParser.parse(arrayBuf, true);
 
         const geo = new THREE.BufferGeometry();
         geo.setAttribute('position', new THREE.BufferAttribute(cobData.positions, 3));
@@ -83,7 +85,6 @@ class App {
             geo.setAttribute('uv', new THREE.BufferAttribute(cobData.uvs, 2));
         }
         geo.computeVertexNormals();
-        geo.center(); // Center model at origin
 
         this.cachedGeometries[url] = geo;
         return geo;
@@ -115,7 +116,7 @@ class App {
         // Play/Pause
         this.playBtn.addEventListener('click', () => this.togglePlay());
 
-        // Mode toggle (Modern vs Retro)
+        // Mode toggle
         this.modeBtn.addEventListener('click', () => {
             this.mode = this.mode === 'modern' ? 'retro' : 'modern';
             this.modeBtn.innerHTML = this.mode === 'modern' ? '⚡ Modern' : '🕹️ Retro';
@@ -147,6 +148,9 @@ class App {
             btn.addEventListener('click', () => {
                 const targetTime = parseFloat(btn.dataset.time);
                 this.seek(targetTime);
+                if (!this.isPlaying) {
+                    this.togglePlay();
+                }
             });
         });
     }
@@ -233,6 +237,9 @@ class App {
         this.currentTime = Math.max(0, Math.min(this.duration, time));
         this.audioPlayer.seek(this.currentTime);
         this.updateTimeUI();
+        if (this.sceneManager) {
+            this.sceneManager.update(this.currentTime, 0);
+        }
     }
 
     onSceneChange(seg) {
