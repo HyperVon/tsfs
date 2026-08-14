@@ -97,7 +97,9 @@ To modern eyes accustomed to real-time ray tracing and 4K displays, a 320×200 r
 | **Display Mode** | 320×200 with 256 indexed palette colors (VGA Mode 13h) | 3840×2160 (4K) 32-bit True Color (16.7M colors + HDR) | **~130× pixel count**, unconstrained color depth |
 | **Math Optimization** | 16.16 Fixed-Point Math & Precomputed 64KB LUTs | 64-bit IEEE Floating Point & SIMD Vector Instructions | Direct FP calculation in hardware |
 
-#### ⚡ Why This Was an Engineering Achievement
+### 🏆 Summary: A Technical Marvel for Its Time
+
+> *Even if retro 320×200 graphics look humble by modern standards, under the hood **The Search for Steve** was a tour-de-force of software engineering, numerical optimization, and pure mathematical derivation built on commodity hardware by undergraduate college students.*
 * **Full 6DOF Arbitrary 3D Pipeline**: While much of the mid-1990s gaming world was still utilizing 2.5D raycasting (*Wolfenstein 3D*) or BSP sector rendering (*Doom*), this engine implemented full 6-degrees-of-freedom 3D geometry with 98 trueSpace Caligari meshes, 4×4 homogeneous coordinate matrices, Sutherland-Hodgman view-frustum clipping, and sub-pixel edge-walking software rasterizers written completely from scratch.
 * **Live Video Texture-Mapped in Real Time**: In 1997, simply decompressing and playing back a 128×128 video stream consumed a massive fraction of a Pentium CPU's cycles. Texture-mapping that 266-frame video stream onto multiple rotating faces of a 3D polygonal cube simultaneously—while calculating matrix transformations, lighting, and camera paths in pure software—was a major technical feat.
 * **In-Engine 3D Tooling & Splines**: Rather than hardcoding camera coordinates or settling for jerky cuts, the team built their own interactive in-engine 3D flight recorder ([`src/record.c`](src/record.c)) and implemented **Kochanek-Bartels (TCB) cubic Hermite splines** with ease-in/ease-out acceleration profiles—the exact mathematical curve interpolation used by commercial packages like 3D Studio and Lightwave.
