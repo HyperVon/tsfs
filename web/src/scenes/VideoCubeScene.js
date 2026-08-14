@@ -14,8 +14,8 @@ export class VideoCubeScene {
     async init() {
         const THREE = this.app.THREE;
 
-        // Create VideoCube using web-optimized video stream
-        this.videoCube = new VideoCube('assets/videos/tsfs_web_preview.mp4');
+        // Create VideoCube using dedicated lightweight cube video loop
+        this.videoCube = new VideoCube('assets/videos/cube_video.mp4');
         this.videoCube.init(THREE);
         this.group.add(this.videoCube.mesh);
 

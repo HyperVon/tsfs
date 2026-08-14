@@ -43,7 +43,7 @@ class App {
         this.container.appendChild(this.renderer.domElement);
 
         // Ambient light
-        this.ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+        this.ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
         this.scene.add(this.ambientLight);
 
         // Directional Sun / Stage Light
@@ -54,8 +54,8 @@ class App {
 
     initAudio() {
         this.audioPlayer = new XMPlayer();
-        this.audioPlayer.loadTrack('assets/videos/tsfs_web_preview.mp4').catch(() => {
-            console.warn('Audio track auto-load completed or waiting for user interaction');
+        this.audioPlayer.loadTrack('assets/audio/tsfs_soundtrack.mp3').catch(() => {
+            console.log('Audio initialized, ready for play on user interaction');
         });
     }
 
@@ -83,6 +83,8 @@ class App {
             geo.setAttribute('uv', new THREE.BufferAttribute(cobData.uvs, 2));
         }
         geo.computeVertexNormals();
+        geo.center(); // Center model at origin
+
         this.cachedGeometries[url] = geo;
         return geo;
     }
