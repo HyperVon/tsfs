@@ -1,0 +1,9 @@
+# Build & OS artifacts
+.DS_Store
+*.o
+*.obj
+tools/extract_tsfs
+steve_rgb.raw
+
+# DOSBox capture output (optional)
+capture/

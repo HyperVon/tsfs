@@ -1,0 +1,12 @@
+EXEDAT for programmers V1.0
+(with all C/C++ sources)
+
+With EXEDAT, you can easily create 
+an archive, insert numberous files,
+compress them (or not) and link the
+archive to your .exe file.
+You can load and decompress the data
+in your program at run-time with the
+shipped C sources.
+The sources take care of all the 
+loading and decompressing.
