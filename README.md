@@ -25,7 +25,7 @@
 
 From the original `Tsfs.nfo`:
 
-* **Hypersomnia** — Code / GFX / Design
+* **Hypersomnia** ([@HyperVon](https://github.com/HyperVon)) — Code / GFX / Design
 * **Sirmikey** — Code / GFX / Design
 * **int** — Code
 * **Planet B** — Music / GFX / Design
@@ -153,5 +153,5 @@ This extracts all 266 video frames, texture atlases (`cointro4.pcx`, `scene1.pcx
 ---
 
 <div align="center">
-  <sub>Preserved & modernized for historical demoscene archival by Chaotic Order.</sub>
+  <sub>Preserved & modernized for historical demoscene archival by Hypersomnia ([@HyperVon](https://github.com/HyperVon)) / Chaotic Order.</sub>
 </div>
