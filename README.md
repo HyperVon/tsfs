@@ -126,28 +126,6 @@ From the original `Tsfs.nfo`:
 
 ---
 
-## ⚡ Modern WebGL Remaster (In-Browser Homage)
-
-An interactive, zero-install WebGL / Three.js tribute to **The Search for Steve** is included in the **[`web/`](web/)** directory:
-
-### 🌟 Key Features
-* **Dual-Mode Rendering**: Toggle between **⚡ Modern Cyberpunk Remaster** (PBR reflections, bloom, neon lighting, particle emitters, music-reactive wave matrix) and **🕹️ 1997 Retro VGA** (256-color palette simulation, CRT curvature, scanlines).
-* **Native 1997 Asset Parsers**: In-browser binary parsers directly reading Caligari trueSpace `*.COB` 3D meshes and `*.PTH` camera waypoint files.
-* **Kochanek-Bartels Spline Engine**: 1:1 camera flight path interpolation with authentic ease-in/ease-out acceleration curves.
-* **Live Video Cube**: Real-time video texture mapping across the rotating 3D polygonal cube.
-* **Interactive Museum Controls**:
-  * **Free-Cam Mode**: Press **`Spacebar`** anytime to detach the camera from the scripted spline and fly freely through the 3D scene using **WASD + Mouse**!
-  * **Timeline Scrubber**: Jump to any point in the 4m 39s demo timeline.
-  * **Audio Visualizer**: Live FFT audio frequency spectrum analyzer.
-
-### 🚀 How to Run the WebGL Remaster Locally
-```bash
-cd web
-python3 -m http.server 8000
-# Open http://localhost:8000 in any browser!
-```
-
----
 ## 🚀 How to Run
 
 The demo runs with full audio and visual accuracy on modern systems via **DOSBox Staging** (recommended), **DOSBox-X**, or classic **DOSBox**.
