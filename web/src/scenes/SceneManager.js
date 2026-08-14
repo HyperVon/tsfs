@@ -8,7 +8,6 @@ import { SplineEngine } from '../core/SplineEngine.js';
 
 /**
  * Master Scene Director & Timeline Coordinator
- * 4m 39s (279 seconds) matching the exact original 1997 demoparty timeline.
  */
 export class SceneManager {
     constructor(app) {
@@ -17,7 +16,6 @@ export class SceneManager {
         this.currentSceneIndex = -1;
         this.splines = {};
 
-        // Timeline segments (timestamps in seconds)
         this.timeline = [
             { id: 'intro', name: 'Chaotic Order 3D Logo', start: 0, end: 50, sceneIdx: 0, pth: 'assets/paths/COINTRO.PTH' },
             { id: 'grid', name: 'Waving Box Matrix', start: 50, end: 115, sceneIdx: 1, pth: 'assets/paths/SCENE1A.PTH' },
@@ -29,7 +27,6 @@ export class SceneManager {
     }
 
     async init() {
-        // Instantiate all scene controllers
         this.scenes = [
             new IntroScene(this.app),
             new GridScene(this.app),
@@ -45,7 +42,7 @@ export class SceneManager {
             this.app.scene.add(s.group);
         }
 
-        // Load camera spline path files
+        // Preload spline paths
         for (const seg of this.timeline) {
             if (seg.pth) {
                 try {
@@ -65,7 +62,6 @@ export class SceneManager {
     }
 
     update(currentTime, delta) {
-        // Determine active timeline segment
         let activeSeg = this.timeline.find(s => currentTime >= s.start && currentTime < s.end);
         if (!activeSeg) {
             activeSeg = this.timeline[this.timeline.length - 1];
@@ -73,13 +69,15 @@ export class SceneManager {
 
         const newIdx = activeSeg.sceneIdx;
         if (newIdx !== this.currentSceneIndex) {
-            // Scene switch
             if (this.currentSceneIndex >= 0 && this.scenes[this.currentSceneIndex]) {
                 this.scenes[this.currentSceneIndex].group.visible = false;
             }
             this.currentSceneIndex = newIdx;
             if (this.scenes[newIdx]) {
                 this.scenes[newIdx].group.visible = true;
+                if (newIdx === 4 && this.scenes[4].videoCube) {
+                    this.scenes[4].videoCube.play();
+                }
             }
             this.app.onSceneChange(activeSeg);
         }
@@ -92,7 +90,7 @@ export class SceneManager {
             activeScene.update(delta, currentTime, bassEnergy, freqData);
         }
 
-        // Update Camera Position via Spline if NOT in Free-Cam mode
+        // Camera control via spline
         if (!this.app.isFreeCam) {
             const spline = this.splines[activeSeg.id];
             if (spline) {
@@ -103,9 +101,8 @@ export class SceneManager {
                 this.app.camera.position.set(camState.viewpoint.x, camState.viewpoint.y, camState.viewpoint.z);
                 this.app.camera.lookAt(camState.lookat.x, camState.lookat.y, camState.lookat.z);
             } else {
-                // Default orbit camera fallback for scenes without paths
                 const angle = currentTime * 0.4;
-                this.app.camera.position.set(Math.cos(angle) * 20, 4, Math.sin(angle) * 20);
+                this.app.camera.position.set(Math.cos(angle) * 20, 5, Math.sin(angle) * 20);
                 this.app.camera.lookAt(0, 0, 0);
             }
         }

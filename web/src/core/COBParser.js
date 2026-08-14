@@ -1,16 +1,17 @@
 /**
  * Caligari trueSpace binary (.COB) parser for Three.js
- * Parses PolH chunks into THREE.BufferGeometry with normals and UV coordinates.
- * Faithful port of Chaotic Order's 1997 load_cobFN in src/diff2c.c
+ * Parses PolH chunks and transforms vertices using the 3D current_position matrix.
+ * Exact port of Chaotic Order's load_cobFN in src/diff2c.c
  */
 
 export class COBParser {
     /**
      * Parse an ArrayBuffer containing a Caligari .COB binary file
      * @param {ArrayBuffer} buffer
+     * @param {boolean} applyPositionMatrix - Whether to apply the trueSpace world position matrix
      * @returns {{ name: string, positions: Float32Array, uvs: Float32Array | null, vertexCount: number, faceCount: number }}
      */
-    static parse(buffer) {
+    static parse(buffer, applyPositionMatrix = true) {
         const view = new DataView(buffer);
         const bytes = new Uint8Array(buffer);
 
@@ -22,11 +23,10 @@ export class COBParser {
 
         let pos = 32; // Skip 32-byte file header
         let objectName = 'COB_Object';
-        let vertices = [];
+        let rawVertices = [];
         let uvs = [];
         let faces = [];
-        let localAxes = [];
-        let currentPosition = [];
+        let currentPosMatrix = [];
 
         while (pos + 20 <= buffer.byteLength) {
             const chunkType = String.fromCharCode(...bytes.slice(pos, pos + 4));
@@ -45,15 +45,12 @@ export class COBParser {
                 objectName = String.fromCharCode(...bytes.slice(pos, pos + strLen)).replace(/\0/g, '');
                 pos += strLen;
 
-                // Read 4x3 local axes matrix (12 floats)
-                for (let i = 0; i < 12; i++) {
-                    localAxes.push(view.getFloat32(pos, true));
-                    pos += 4;
-                }
+                // Skip 4x3 local axes matrix (12 floats)
+                pos += 48;
 
-                // Read 3x4 position matrix (12 floats)
+                // Read 4x3 / 4x4 current position matrix (12 floats)
                 for (let i = 0; i < 12; i++) {
-                    currentPosition.push(view.getFloat32(pos, true));
+                    currentPosMatrix.push(view.getFloat32(pos, true));
                     pos += 4;
                 }
 
@@ -66,7 +63,7 @@ export class COBParser {
                     const y = view.getFloat32(pos + 4, true);
                     const z = view.getFloat32(pos + 8, true);
                     pos += 12;
-                    vertices.push(x, y, z);
+                    rawVertices.push({ x, y, z });
                 }
 
                 // Read UV texture vertices
@@ -101,7 +98,7 @@ export class COBParser {
                         faceUvs.push(uvI);
                     }
 
-                    // Triangulate n-gons if needed (fan triangulation)
+                    // Triangulate n-gons (fan triangulation)
                     for (let t = 1; t < numVertsInFace - 1; t++) {
                         faces.push({
                             a: faceVerts[0],
@@ -118,14 +115,37 @@ export class COBParser {
             pos = chunkEnd; // Advance to next chunk
         }
 
+        // Apply trueSpace 3D current_position transformation
+        const transformedVertices = [];
+        const m = currentPosMatrix.length >= 12 ? currentPosMatrix : [
+            1, 0, 0, 0,
+            0, 1, 0, 0,
+            0, 0, 1, 0
+        ];
+
+        for (let i = 0; i < rawVertices.length; i++) {
+            const vx = rawVertices[i].x;
+            const vy = rawVertices[i].y;
+            const vz = rawVertices[i].z;
+
+            if (applyPositionMatrix && currentPosMatrix.length >= 12) {
+                const tx = vx * m[0] + vy * m[3] + vz * m[6] + m[9];
+                const ty = vx * m[1] + vy * m[4] + vz * m[7] + m[10];
+                const tz = vx * m[2] + vy * m[5] + vz * m[8] + m[11];
+                transformedVertices.push(tx, ty, tz);
+            } else {
+                transformedVertices.push(vx, vy, vz);
+            }
+        }
+
         // Build position and UV arrays for THREE.BufferGeometry
         const positions = [];
         const texCoords = [];
 
         for (const face of faces) {
-            const ax = vertices[face.a * 3], ay = vertices[face.a * 3 + 1], az = vertices[face.a * 3 + 2];
-            const bx = vertices[face.b * 3], by = vertices[face.b * 3 + 1], bz = vertices[face.b * 3 + 2];
-            const cx = vertices[face.c * 3], cy = vertices[face.c * 3 + 1], cz = vertices[face.c * 3 + 2];
+            const ax = transformedVertices[face.a * 3], ay = transformedVertices[face.a * 3 + 1], az = transformedVertices[face.a * 3 + 2];
+            const bx = transformedVertices[face.b * 3], by = transformedVertices[face.b * 3 + 1], bz = transformedVertices[face.b * 3 + 2];
+            const cx = transformedVertices[face.c * 3], cy = transformedVertices[face.c * 3 + 1], cz = transformedVertices[face.c * 3 + 2];
 
             positions.push(ax, ay, az, bx, by, bz, cx, cy, cz);
 
@@ -141,7 +161,7 @@ export class COBParser {
             name: objectName,
             positions: new Float32Array(positions),
             uvs: texCoords.length > 0 ? new Float32Array(texCoords) : null,
-            vertexCount: vertices.length / 3,
+            vertexCount: transformedVertices.length / 3,
             faceCount: faces.length
         };
     }

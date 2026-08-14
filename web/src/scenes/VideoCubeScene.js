@@ -1,54 +1,45 @@
 import { VideoCube } from '../video/VideoCube.js';
+import { WorldLoader } from '../core/WorldLoader.js';
 
 /**
- * Scene 4: The 3D Video Cube (Live Video Texture Mapped)
+ * Scene 4: Authentic 3D Video Cube (SCENE4.WLD)
  */
 export class VideoCubeScene {
     constructor(app) {
         this.app = app;
         this.group = new app.THREE.Group();
         this.videoCube = null;
-        this.backgroundRings = [];
+        this.worldGroup = null;
     }
 
     async init() {
         const THREE = this.app.THREE;
+        const loader = new WorldLoader(this.app);
 
-        // Create VideoCube using dedicated lightweight cube video loop
+        // Load genuine 1997 SCENE4.WLD scene graph (planes & sphere)
+        this.worldGroup = await loader.loadWorld('assets/worlds/SCENE4.WLD');
+        this.group.add(this.worldGroup);
+
+        // Add 3D Video Cube with video stream
         this.videoCube = new VideoCube('assets/videos/cube_video.mp4');
         this.videoCube.init(THREE);
         this.group.add(this.videoCube.mesh);
 
-        // Surrounding orbital neon rings (TORENV.COB / RINGS.COB)
+        // Orbital rings
         for (let i = 0; i < 3; i++) {
-            const ringGeo = new THREE.TorusGeometry(8 + i * 3, 0.25, 16, 64);
+            const ringGeo = new THREE.TorusGeometry(10 + i * 3, 0.2, 16, 64);
             const ringMat = new THREE.MeshStandardMaterial({
-                color: i === 0 ? 0x00ffcc : (i === 1 ? 0xff0088 : 0xffee00),
-                emissive: i === 0 ? 0x00ffcc : (i === 1 ? 0xff0088 : 0xffee00),
-                emissiveIntensity: 0.5,
-                metalness: 0.9,
-                roughness: 0.1
+                color: i === 0 ? 0x00ffcc : 0xff0088,
+                emissive: i === 0 ? 0x00ffcc : 0xff0088,
+                emissiveIntensity: 0.5
             });
             const ring = new THREE.Mesh(ringGeo, ringMat);
-            this.backgroundRings.push(ring);
             this.group.add(ring);
         }
 
-        // Surrounding starfield
-        const starGeo = new THREE.BufferGeometry();
-        const starCount = 300;
-        const starPositions = new Float32Array(starCount * 3);
-        for (let i = 0; i < starCount * 3; i++) {
-            starPositions[i] = (Math.random() - 0.5) * 160;
-        }
-        starGeo.setAttribute('position', new THREE.BufferAttribute(starPositions, 3));
-        const starMat = new THREE.PointsMaterial({ color: 0x00ffff, size: 0.5 });
-        this.stars = new THREE.Points(starGeo, starMat);
-        this.group.add(this.stars);
-
-        // Point lights
-        const l1 = new THREE.PointLight(0x00ffea, 50, 40);
-        l1.position.set(8, 8, 8);
+        // Lighting
+        const l1 = new THREE.PointLight(0x00ffff, 40, 50);
+        l1.position.set(5, 10, 5);
         this.group.add(l1);
     }
 
@@ -56,20 +47,19 @@ export class VideoCubeScene {
         if (this.videoCube) {
             this.videoCube.setMode(mode);
         }
+        const isRetro = mode === 'retro';
+        if (this.worldGroup) {
+            this.worldGroup.traverse(child => {
+                if (child.isMesh && child.userData && child.userData.retroMat) {
+                    child.material = isRetro ? child.userData.retroMat : child.userData.modernMat;
+                }
+            });
+        }
     }
 
     update(delta, time, bassEnergy) {
         if (this.videoCube) {
             this.videoCube.update(delta, bassEnergy);
-        }
-
-        this.backgroundRings.forEach((r, i) => {
-            r.rotation.x += delta * (0.4 + i * 0.2);
-            r.rotation.y += delta * (0.6 - i * 0.1);
-        });
-
-        if (this.stars) {
-            this.stars.rotation.y += delta * 0.05;
         }
     }
 }
