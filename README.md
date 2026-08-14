@@ -22,11 +22,17 @@
 ---
 
 
-### 📺 Full Demo Video (4K / 1080p Recording)
+### 📺 Full Demo Video (4m 39s)
 
-https://github.com/HyperVon/tsfs/raw/main/docs/videos/tsfs_full_demo.mp4
+[![Watch Full Demo Video](https://img.shields.io/badge/▶%20Play%20Full%20Demo%20Video-(1080p%20%2F%2048kHz%20Stereo)-red?style=for-the-badge&logo=youtube)](https://github.com/HyperVon/tsfs/releases/download/v1.0.0/tsfs_full_demo.mp4)
 
-*(Click above to play the full 4-minute 39-second recording directly on GitHub)*
+<div align=center>
+  <a href="https://github.com/HyperVon/tsfs/releases/download/v1.0.0/tsfs_full_demo.mp4">
+    <img src="docs/images/intro_comedy.png" width="560" alt="Play Full Demo Video" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);" />
+    <br/>
+    <sub><b>▶ Click to Watch / Download Full 1080p Demo Video (4 min 39 sec)</b></sub>
+  </a>
+</div>
 
 ---
 ## 👥 Credits (Chaotic Order)
